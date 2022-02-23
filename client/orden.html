@@ -10,25 +10,53 @@
   <style>
     .my-order {
       font-size: var(--md);
-
     }
+.my-order-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  margin: 30px auto;
+  gap: 20px
+}
     .my-order-content {
-      background-color: var(--very-light);
+      background-color: var(--text-input-field);
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-radius: 10px;
     }
 
+    .my-order-content p {
+      font-weight: bold;
+      padding: 0;
+      margin: 0;
+      color: var(--dark);
+    }
+    .my-order-content p span:first-child {
+      color: var(--dark);
+      font-size: var(--md);
+    }
+    .my-order-content p span:last-child {
+      font-weight: normal;
+    }
+    .shopping {
+      display: grid;
+      gap: 20px;
+    }
     .shopping-item {
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
       justify-content: center;
       gap: 20px;
-      margin: 20px;
     }
 
     .shopping-item p {
       color: var(--very-light);
       font-size: var(--md);
-      font-weight: bold;
+      font-weight: regular;
       padding: 0;
       margin: 0;
     }
@@ -36,8 +64,10 @@
     .shopping-item p:last-child {
       color: var(--black);
       font-size: var(--md);
-
+      font-weight: bold;
+      padding-right: 10px;
     }
+
     figure {
       margin: 0;
     }
@@ -57,7 +87,7 @@
 
       <div class="my-order-content">
         <p>
-          <span>03.25.21</span>
+          <span>03.25.21</span><br>
           <span>6 articles</span>
         </p>
         <p class="subtitle">$560.00</p>
@@ -82,6 +112,33 @@
           </figure>
           <p class="m0">Bike</p>
           <p class="m0">$120.00</p>
+        </div>
+        <div class="shopping-item">
+          <figure>
+            <img
+              src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              alt="">
+          </figure>
+          <p>Bike</p>
+          <p>$120.00</p>
+        </div>
+        <div class="shopping-item">
+          <figure>
+            <img
+              src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              alt="">
+          </figure>
+          <p>Bike</p>
+          <p>$120.00</p>
+        </div>
+        <div class="shopping-item">
+          <figure>
+            <img
+              src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              alt="">
+          </figure>
+          <p>Bike</p>
+          <p>$120.00</p>
         </div>
         <div class="shopping-item">
           <figure>
