@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./styles/main.css">
+  <style>
+    .minimenu {
+      width: 200px;
+      border: 1px solid var(--very-light);
+      border-radius: 6px;
+      text-align: end;
+      display: flex;
+    }
+
+    ul {
+      width: 100%;
+    }
+    li {
+      font-weight: bold;
+      padding: 14px 0;
+      margin: 16px 20px;
+      box-sizing: border-box;
+    }
+
+    li:not(:last-child) a {
+      color: var(--black);
+      font-size: var(--lg);
+    }
+
+    li:last-child {
+      border-top: 1px solid var(--very-light);
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="minimenu">
+    <ul>
+      <li><a href="#">My orders</a></li>
+      <li><a href="#">My account</a></li>
+      <li><a href="#">Sign out</a></li>
+    </ul>
+  </div>
+</body>
+
+</html>
