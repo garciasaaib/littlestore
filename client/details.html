@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./styles/main.css">
+  <style>
+    .product-detail {
+      max-width: 600px;
+      min-height: 100vh;
+    }
+
+    .product-detail {
+      position: relative;
+      grid-template-rows: auto 1fr;
+      display: grid;
+    }
+
+    .close-button {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 40px;
+      height: 40px;
+      z-index: 1;
+      background: var(--white);
+      padding: 4px;
+      border-radius: 50%;
+    }
+
+    .product-image {
+      width: 100%;
+      height: inherit;
+      object-fit: cover;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .product-info {
+      margin: 20px;
+      display: grid;
+      /* flex-direction: column; */
+      /* background: red; */
+      align-self: flex-start;
+      /* height: auto; */
+      /* align-items: stretch; */
+    }
+
+    .button-bottom {
+      margin: 20px;
+    }
+
+    .product-info p {
+      font-size: var(--md);
+      color: var(--dark)
+    }
+
+    .product-info .title {
+      margin: 4px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <aside class="product-detail">
+    <img class="close-button" src="./assets/icons/icon_close.png" alt="">
+    <img class="product-image"
+      src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+      alt="">
+    <div class="product-info">
+      <p class="title left-align">$53.53</p>
+      <p class="">Bike</p>
+      <p>Es buena para hacer ejercicio, usada mas de 40 años por un abuelito que la cuidaba demaciado para que durara 1
+        o mas vidas. Es buena para hacer ejercicio, usada mas de 40 años por un abuelito que la cuidaba demaciado para
+        que durara 1
+        o mas vidas.</p>
+      </div>
+      <button class="primary-button button-bottom">Add to cart</button>
+  </aside>
+</body>
+
+</html>

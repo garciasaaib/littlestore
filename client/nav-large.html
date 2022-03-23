@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./styles/main.css">
+  <style>
+    .burger {
+      display: none;
+      cursor: pointer
+    }
+
+    .nav-logo {
+      height: 30px;
+    }
+
+    .navbar-right li {
+      list-style: none;
+      margin: 0;
+    }
+
+    .navbar-right .email {
+      color: var(--very-light);
+      font-size: var(--sm);
+      font-weight: normal;
+      margin-right: 30px;
+    }
+
+    .navbar-left,
+    .navbar-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .navbar-left ul{
+      margin-left: 16px;
+    }
+    .navbar-left li{
+      margin: 0;
+      font-size: var(-sm);
+    }
+
+    .navbar-left li a.desk {
+      color: var(--very-light);
+      border: 2px solid transparent;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: var(--md);
+    }
+
+    .navbar-left li a.desk.selected,
+    .navbar-left li a.desk:hover {
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      border-radius: 6px;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 20px;
+      width: 100%;
+      border-bottom: 1px solid var(--very-light);
+    }
+
+    nav ul {
+
+      display: flex;
+      gap: 4px;
+    }
+
+    .navbar-shopping-cart {
+      position: relative;
+    }
+    .navbar-shopping-cart img{
+      height: 40px;
+    }
+    .navbar-shopping-cart div {
+      position: absolute;
+      right: 7px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 850px) {
+      .burger {
+        display: block;
+      }
+      .navbar-left ul {
+        display: none;
+      }
+      .navbar-right .email {
+        display: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <img class="burger" src="./assets/icons/icon_menu.svg" alt="">
+    <div class="navbar-left">
+      <img class="nav-logo" src="./assets/logos/logo_yard_sale.svg" alt="">
+
+      <ul>
+        <li><a class="desk selected" href="#">All</a></li>
+        <li><a class="desk" href="#">Clothes</a></li>
+        <li><a class="desk" href="#">Electronics</a></li>
+        <li><a class="desk" href="#">Furnitures</a></li>
+        <li><a class="desk" href="#">Toys</a></li>
+        <li><a class="desk" href="#">Others</a></li>
+      </ul>
+    </div>
+
+    <div class="navbar-right">
+      <li class="email">Platzi@example.com</li>
+      <li class="navbar-shopping-cart"><div>5</div>
+        <img src="./assets/icons/icon_shopping_cart_notification.svg" alt="">
+      </li>
+    </div>
+  </nav>
+</body>
+
+</html>
