@@ -1,28 +1,30 @@
+@api = http://localhost:3001/api/v1
+
 ### primera ruta en la historia
-GET http://localhost:3000 HTTP/1.1
+GET {{api}} HTTP/1.1
 
 ### ruta de prueba 2
-GET http://localhost:3000/new HTTP/1.1
+GET {{api}}/new HTTP/1.1
 
 ### get products list
-GET http://localhost:3000/api/v1/products HTTP/1.1
+GET {{api}}/products HTTP/1.1
 
 ### get products list sizes 10
-GET http://localhost:3000/api/v1/products?size=4 HTTP/1.1
+GET {{api}}/products?size=4 HTTP/1.1
 
 ### get product
-GET http://localhost:3000/api/v1/products/050e5aaf-1027-4a0b-ad0d-be94c66db8dd HTTP/1.1
+GET {{api}}/products/af550f06-c91a-43e9-b4cb-a520b592d822 HTTP/1.1
 
 ### get filtered category by id and product by id
-GET http://localhost:3000/api/v1/categories/1/products/2 HTTP/1.1
+GET {{api}}/categories/1/products/2 HTTP/1.1
 
 ### users list with offset and limit
-GET http://localhost:3000/api/v1/users?limit=2&offset=2 HTTP/1.1
+GET {{api}}/users?limit=2&offset=2 HTTP/1.1
 ### users list with error
-GET http://localhost:3000/api/v1/users HTTP/1.1
+GET {{api}}/users HTTP/1.1
 
 ### create product
-POST http://localhost:3000/api/v1/products HTTP/1.1
+POST {{api}}/products HTTP/1.1
 content-type: application/json
 
 {
@@ -32,7 +34,7 @@ content-type: application/json
 }
 
 ### partial update product with PATCH
-PATCH http://localhost:3000/api/v1/products/465817a8-a135-4e1d-8e0f-8d094a927d7a HTTP/1.1
+PATCH {{api}}/products/b49952ac-86fd-41e3-ae59-d812b0c702c0 HTTP/1.1
 content-type: application/json
 
 {
@@ -40,7 +42,7 @@ content-type: application/json
 }
 
 ### complete hole update product with PUT
-PUT http://localhost:3000/api/v1/products/465817a8-a135-4e1d-8e0f-8d094a927d7a HTTP/1.1
+PUT {{api}}/products/465817a8-a135-4e1d-8e0f-8d094a927d7a HTTP/1.1
 content-type: application/json
 
 {
@@ -50,4 +52,4 @@ content-type: application/json
 }
 
 ### delete only wth id
-DELETE  http://localhost:3000/api/v1/products/1 HTTP/1.1
+DELETE  {{api}}/products/465817a8-a135-4e1d-8e0f-8d094a927d7a HTTP/1.1

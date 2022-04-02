@@ -1,11 +1,11 @@
 const faker = require('faker')
 
-class ProductsService  {
-  constructor(){
+class ProductsService {
+  constructor() {
     this.products = []
     this.generate()
   }
-  generate(){
+  generate() {
     const limit = 100
     for (let i = 0; i < limit; i++) {
       this.products.push({
@@ -16,7 +16,7 @@ class ProductsService  {
       })
     }
   }
-  create(data){
+  async create(data) {
     const newProduct = {
       id: faker.datatype.uuid(),
       ...data
@@ -24,24 +24,25 @@ class ProductsService  {
     this.products.push(newProduct)
     return newProduct
   }
-  find(){
+  async find() {
+    const name = this.getTotal()
+
     return this.products
   }
-  findOne(id){
+  async findOne(id) {
     return this.products.find(item => item.id === id)
   }
-  update(id, changes){
+  async update(id, changes) {
     const index = this.products.findIndex(item => item.id === id)
     if (index === -1) throw new Error("Product not found")
-    const newProduct= Object.assign(this.products[index], changes)
-    console.log(newProduct)
+    const newProduct = Object.assign(this.products[index], changes)
     this.products[index] = newProduct
     return this.products[index]
   }
-  delete(id){
+  async delete(id) {
     const index = this.products.findIndex(item => item.id === id)
     if (index === -1) throw new Error("Product not found")
-    this.products.splice(index, 1)
+    await this.products.splice(index, 1)
     return id
 
   }

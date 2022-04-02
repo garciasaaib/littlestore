@@ -4,53 +4,83 @@ const ProductsService = require('../services/products.service')
 const router = express.Router();
 const service = new ProductsService()
 
-router.get('/', (req, res) => {
-  const products = service.find()
-  res.json(products)
+router.get('/', async (req, res, next) => {
+  try {
+    const products = await service.find()
+    res.json(products)
+  } catch (error) {
+    next(error)}
+    // res.status(400).json({ message: error.message })}
 })
 
-router.get('/filter', (req, res) => {
-  res.json({ message: "vista con solo filtro" },)
+router.get('/filter', async (req, res) => {
+  try {
+    res.json({ message: "vista con solo filtro" },)
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
 })
 
-router.get('/:id', (req, res) => {
-  const { id } = req.params
-  const product = service.findOne(id)
-  if (id === '999') return res.status(404).json({ message: "Not found" })
-  res.status(200).json({ product: product, message: "este es otro producto" },)
+router.get('/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params
+    const product = await service.findOne(id)
+    if (id === '999') return res.json({ message: "Not found" })
+    res.json({ product: product, message: "este es otro producto" },)
+  } catch (error) {
+    next(error) }
+    // res.status(400).json({ message: error.message })}
 })
 
-router.post('/', (req, res) => {
-  const { name, price, image } = req.body
-  const newProduct = service.create({ name, price, image })
-  res.status(201).json({ message: "created", product: newProduct },)
+router.post('/', async (req, res) => {
+  try {
+    const { name, price, image } = req.body
+    const newProduct = await service.create({ name, price, image })
+    res.status(201).json({ message: "created", product: newProduct },)
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
 })
 
-router.patch('/:id', (req, res) => {
-  const { id } = req.params
-  const { name, price, image } = req.body
-  const updateData = {}
-  if (name !== '') updateData.name = name;
-  if (price !== '') updateData.price = price;
-  if (image !== '') updateData.image = image;
-  const updatedProduct = service.update(id, updateData)
+router.patch('/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const { name, price, image } = req.body
+    let updateData = {}
+    if (name) updateData.name = name;
+    if (price) updateData.price = price;
+    if (image) updateData.image = image;
+    const updatedProduct = await service.update(id, req.body)
+    res.json({ message: "parcially updated", product: updatedProduct },)
 
-  res.json({ message: "parcially updated", product: updatedProduct },)
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
 })
 
-router.put('/:id', (req, res) => {
-  const { id } = req.params
-  const { name, price, image } = req.body
-  const updatedProduct = service.update(id, { name, price, image })
+router.put('/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const { name, price, image } = req.body
+    const updatedProduct = await service.update(id, { name, price, image })
 
-  res.json({ message: "all updated", product: updatedProduct })
+    res.json({ message: "all updated", product: updatedProduct })
+
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
 })
 
-router.delete('/:id', (req, res) => {
-  const { id } = req.params
-  const deletedProductId = service.delete(id)
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const deletedProductId = await service.delete(id)
 
-  res.json({ message: "deleted", id: deletedProductId },)
+    res.json({ message: "deleted", id: deletedProductId },)
+
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
 })
 
 module.exports = router

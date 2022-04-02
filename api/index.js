@@ -1,25 +1,23 @@
+require('dotenv').config()
 const express = require('express');
 const morgan = require('morgan');
 const routerApi = require('./routes');
-
+const { logErrors, errorHandler } = require('./middlewares/error.handler')
 
 const app = express();
-const port = 3000
+const { API_PORT } = process.env
 app.use(express.json());
 app.use(morgan('dev'));
 
 routerApi(app)
+app.use(logErrors);
+app.use(errorHandler);
 
-app.get('/', (req, res) => {
-  res.send("este es mi server en express")
+
+
+
+
+
+app.listen(API_PORT, () => {
+  console.log("estoy vivo en el puerto " + API_PORT)
 })
-
-app.get('/new', (req, res) => {
-  res.send("otra ruta")
-})
-
-
-
-
-
-app.listen(port, console.log("estoy vivo en el puerto " + port))
