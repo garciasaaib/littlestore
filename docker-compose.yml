@@ -1,0 +1,40 @@
+### run posgres
+# $ docker-compose up -d postgres
+### check if posgres is running
+# $ docker-compose ps
+### turn off docker-compose
+# $ docker-compose down
+### open postgres in terminal
+# $ docker-compose exec postgres bash
+
+### run pgadmin
+# $ docker-compose up -d pgadmin
+### open browser in localhost:5050 & enter email & password
+### copy ip of pgadmin
+# $ docker ps
+### inspect the container get the IPAddress
+# $ docker inspect c920b05a435c
+### copy IPAddress and create a conection with database in localhost:5050
+### connect to the server and create a new table
+
+version: '3.3'
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      - DB_NAME: littleStore
+      - DB_USER: postgres
+      - DB_PASS: admin
+      - DB_HOST: localhost
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    pgadmin:
+      image: dpage/pgadmin4
+      environment:
+        - PGADMIN_DEFAULT_EMAIL=user@domain.com
+        - PGADMIN_DEFAULT_PASSWORD=SuperSecret
+      ports:
+        - 5050:80
