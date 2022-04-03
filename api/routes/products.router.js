@@ -13,12 +13,10 @@ router.get('/', async (req, res, next) => {
     // res.status(400).json({ message: error.message })}
 })
 
-router.get('/filter', async (req, res) => {
+router.get('/filter', async (req, res, next) => {
   try {
     res.json({ message: "vista con solo filtro" },)
-  } catch (error) {
-    res.status(400).json({ message: error.message })
-  }
+  } catch (error) { next(error) }
 })
 
 router.get('/:id', async (req, res, next) => {
@@ -27,22 +25,19 @@ router.get('/:id', async (req, res, next) => {
     const product = await service.findOne(id)
     if (id === '999') return res.json({ message: "Not found" })
     res.json({ product: product, message: "este es otro producto" },)
-  } catch (error) {
-    next(error) }
-    // res.status(400).json({ message: error.message })}
+  } catch (error) { next(error) }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
   try {
     const { name, price, image } = req.body
     const newProduct = await service.create({ name, price, image })
     res.status(201).json({ message: "created", product: newProduct },)
-  } catch (error) {
-    res.status(400).json({ message: error.message })
-  }
+
+  } catch (error) { next(error) }
 })
 
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', async (req, res, next) => {
   try {
     const { id } = req.params
     const { name, price, image } = req.body
@@ -53,12 +48,10 @@ router.patch('/:id', async (req, res) => {
     const updatedProduct = await service.update(id, req.body)
     res.json({ message: "parcially updated", product: updatedProduct },)
 
-  } catch (error) {
-    res.status(400).json({ message: error.message })
-  }
+  } catch (error) { next(error) }
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', async (req, res, next) => {
   try {
     const { id } = req.params
     const { name, price, image } = req.body
@@ -66,21 +59,17 @@ router.put('/:id', async (req, res) => {
 
     res.json({ message: "all updated", product: updatedProduct })
 
-  } catch (error) {
-    res.status(400).json({ message: error.message })
-  }
+  } catch (error) { next(error) }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res, next) => {
   try {
     const { id } = req.params
     const deletedProductId = await service.delete(id)
 
     res.json({ message: "deleted", id: deletedProductId },)
 
-  } catch (error) {
-    res.status(400).json({ message: error.message })
-  }
+  } catch (error) { next(error) }
 })
 
 module.exports = router

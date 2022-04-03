@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const morgan = require('morgan');
 const routerApi = require('./routes');
-const { logErrors, errorHandler } = require('./middlewares/error.handler')
+const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler')
 
 const app = express();
 const { API_PORT } = process.env
@@ -11,6 +11,7 @@ app.use(morgan('dev'));
 
 routerApi(app)
 app.use(logErrors);
+app.use(boomErrorHandler);
 app.use(errorHandler);
 
 
