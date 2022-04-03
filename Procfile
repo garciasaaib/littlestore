@@ -1,1 +1,1 @@
-web: sh -c 'cd api && npm run start'
+web: sh -c 'cd api && npm i && npm run start'
