@@ -1,0 +1,21 @@
+{
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "version": "v1",
+      "prodToken": "foo",
+      "nonProdToken": "bar"
+    },
+    "local": {
+      "baseUrl": "http://localhost",
+      "port": ":3001",
+      "version": "v1",
+      "token": "{{$shared nonProdToken}}"
+    },
+    "production": {
+      "host": "example.com",
+      "token": "{{$shared prodToken}}",
+      "secretKey": "prodSecret"
+    }
+  },
+  // "rest-client.previewResponseInUntitledDocument": true
+}

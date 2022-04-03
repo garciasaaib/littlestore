@@ -1,26 +1,33 @@
-@api = http://localhost:3001/api/v1
+### setting enviroment
+# `Ctrl + Shift + P`, & write `Rest Client: Switch Environment`
 
+### vars
+# @apis = http://localhost:3001/api/v1
+
+@api = {{baseUrl}}{{port}}/api/{{version}}
+@endpoint = {{api}}/products
 
 ### get products list
-GET {{api}}/products HTTP/1.1
+GET {{endpoint}} HTTP/1.1
 
 ### get products list sizes 10
-GET {{api}}/products?size=4 HTTP/1.1
+GET {{endpoint}}?size=4 HTTP/1.1
 
 ### get product
-GET {{api}}/products/8d
+GET {{endpoint}}/8d
 
 ### get filtered category by id and product by id
-GET {{api}}/categories/1/products/2 HTTP/1.1
+GET {{endpoint}}/categories/1/2 HTTP/1.1
 
 ### users list with offset and limit
-GET {{api}}/users?limit=2&offset=2 HTTP/1.1
+GET {{endpoint}}/users?limit=2&offset=2 HTTP/1.1
 ### users list with error
-GET {{api}}/users HTTP/1.1
+GET {{endpoint}}/users HTTP/1.1
 
 ### create product
-POST {{api}}/products HTTP/1.1
+POST {{endpoint}} HTTP/1.1
 content-type: application/json
+Authorization: {{token}}
 
 {
   "name": "Ball",
@@ -29,7 +36,7 @@ content-type: application/json
 }
 
 ### partial update product with PATCH
-PATCH {{api}}/products/63065478-f99d-4f5b-97d7-f3abf900791f HTTP/1.1
+PATCH {{endpoint}}/f5c0d64c-a39b-4555-bd77-4d074b207d14 HTTP/1.1
 content-type: application/json
 
 {
@@ -37,7 +44,7 @@ content-type: application/json
 }
 
 ### complete hole update product with PUT
-PUT {{api}}/products/465817a8-a135-4e1d-8e0f-8d094a927d7a HTTP/1.1
+PUT {{endpoint}}/465817a8-a135-4e1d-8e0f-8d094a927d7a HTTP/1.1
 content-type: application/json
 
 {
@@ -47,4 +54,4 @@ content-type: application/json
 }
 
 ### delete only wth id
-DELETE  {{api}}/products/465817a8-a135-4e1d-8e0f-8d094a927d7a HTTP/1.1
+DELETE  {{endpoint}}/465817a8-a135-4e1d-8e0f-8d094a927d7a HTTP/1.1

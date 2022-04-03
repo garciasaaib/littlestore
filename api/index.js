@@ -20,7 +20,7 @@ if (NODE_ENV === 'development') {
 
   routerApi(app)
 
-  app.use(logErrors);
+  // app.use(logErrors);
   app.use(boomErrorHandler);
   app.use(errorHandler);
 }
@@ -38,7 +38,7 @@ else if (NODE_ENV === 'production') {
   const whitelist = ['http://localhost:8080', 'http://localhost:3000']
   const corsOptions = {
     origin: (origin, callback) => {
-      if (whitelist.includes(origin)) callback(null, true)
+      if (whitelist.includes(origin) || !origin) callback(null, true)
       callback(new Error('Cors Error'))
     }
   }
