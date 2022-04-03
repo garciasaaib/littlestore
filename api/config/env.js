@@ -2,8 +2,7 @@ require('dotenv').config()
 
 const config = {
   environment: {
-    env: process.env.NODE_ENV || 'development',
-    port: process.env.PORT || 3001
+
   },
 
   db1: {
@@ -16,4 +15,7 @@ const config = {
 
 }
 
-module.exports = config
+module.exports = {
+  env: process.env.NODE_ENV || 'development',
+  port: process.env.PORT || 3001
+}
