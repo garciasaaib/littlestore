@@ -1,5 +1,6 @@
 const faker = require('faker')
 const boom = require('@hapi/boom')
+const getConnection = require('../libs/postgres')
 
 class ProductsService {
   constructor() {
@@ -27,9 +28,11 @@ class ProductsService {
     return newProduct
   }
   async find() {
-    const products = this.products
-    if(!products.length) throw boom.notFound('Product not found')
-    return products
+    const client = await getConnection()
+    const rta = await client.query("SELECT * FROM tasks")
+    // const products = this.products
+    // if(!products.length) throw boom.notFound('Product not found')
+    return rta
   }
   async findOne(id) {
     const product = this.products.find(item => item.id === id)
