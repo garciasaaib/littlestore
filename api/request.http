@@ -8,7 +8,7 @@ GET {{api}}/products HTTP/1.1
 GET {{api}}/products?size=4 HTTP/1.1
 
 ### get product
-GET {{api}}/products/8d77a510-13ee-49d8-8296-4f950ab27204
+GET {{api}}/products/8d
 
 ### get filtered category by id and product by id
 GET {{api}}/categories/1/products/2 HTTP/1.1
@@ -23,13 +23,13 @@ POST {{api}}/products HTTP/1.1
 content-type: application/json
 
 {
-  "name": "Refined Metal Ball",
+  "name": "Ball",
   "price": 432,
   "image": "http://placeimg.com/640/480"
 }
 
 ### partial update product with PATCH
-PATCH {{api}}/products/b49952ac-86fd-41e3-ae59-d812b0c702c0 HTTP/1.1
+PATCH {{api}}/products/63065478-f99d-4f5b-97d7-f3abf900791f HTTP/1.1
 content-type: application/json
 
 {
