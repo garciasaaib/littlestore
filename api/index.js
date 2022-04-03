@@ -7,7 +7,7 @@ const routerApi = require('./routes');
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler')
 
 const app = express();
-const { API_PORT, NODE_ENV } = process.env
+const { PORT, NODE_ENV } = process.env
 
 /** NODE_ENV === 'development'
  * everything you want
@@ -56,7 +56,7 @@ else if (NODE_ENV === 'production') {
 
 
 
-app.listen(API_PORT, () => console.log("estoy vivo en el puerto " + API_PORT))
+app.listen(PORT, () => console.log("estoy vivo en el puerto " + PORT))
 
 
 
