@@ -6,19 +6,18 @@ const productSchema = require('../schemas/product.schema')
 const router = express.Router();
 const service = new ProductsService()
 
+/*
+router.get('/filter', async (req, res, next) => {
+  try {
+    res.json({ message: "vista con solo filtro" },)
+  } catch (error) { next(error) }
+})
+*/
+
 router.get('/', async (req, res, next) => {
   try {
     const products = await service.find()
     res.json(products)
-  } catch (error) {
-    next(error)
-  }
-  // res.status(400).json({ message: error.message })}
-})
-
-router.get('/filter', async (req, res, next) => {
-  try {
-    res.json({ message: "vista con solo filtro" },)
   } catch (error) { next(error) }
 })
 
