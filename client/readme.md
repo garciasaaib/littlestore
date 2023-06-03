@@ -1,0 +1,1 @@
+(Fake API)['https://fakeapi.platzi.com/']
