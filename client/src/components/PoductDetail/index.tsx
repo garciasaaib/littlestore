@@ -6,7 +6,11 @@ import { ShoppingCartContext } from '../../context'
 export const ProductDetail = () => {
   const context = useContext(ShoppingCartContext)
   const product = context.productDetails
-  console.log(product)
+
+  if (!context.productDetails) {
+    context.closeAside()
+    return <></>
+  }
   return (
     <aside
       className={`${context.isAsideOpen ? 'flex' : 'hidden'} product-detail flex flex-col fixed bg-white border border-black rounded right-0 bottom-0`}>
@@ -19,13 +23,13 @@ export const ProductDetail = () => {
       </div>
       <div>
         <figure>
-        <img src={product.images[0]} alt={product.title} />
+          <img src={product.images[0]} alt={product.title} />
         </figure>
         <p className='flex flex-col p-6'>
           <span className='font-medium text-2xl'>${product.price}</span>
           <span className='font-medium text-md'>{product.title}</span>
           <span className='font-light text-sm'>{product.description}</span>
-          </p>
+        </p>
       </div>
     </aside>
   )

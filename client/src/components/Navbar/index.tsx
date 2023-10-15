@@ -25,7 +25,7 @@ export const Navbar = () => {
         <li><NavLink className={activeFun} to='/my-orders'>My Orders</NavLink></li>
         <li><NavLink className={activeFun} to='/my-account'>My Account</NavLink></li>
         <li><NavLink className={activeFun} to='/signin'>Sign In</NavLink></li>
-        <li className='flex gap-1'><ShoppingCartIcon className="h-6 w-6"/> {context.count}</li>
+        <li className='flex gap-1'><ShoppingCartIcon className="h-6 w-6"/> {context.cartProducts.length}</li>
       </ul>
     </nav>
   )

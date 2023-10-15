@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/adranuz/littlestore/issues"
   },
-  "homepage": "https://github.com/adranuz/littlestore#readme"
+  "homepage": "https://github.com/adranuz/littlestore#readme",
+  "devDependencies": {
+    "vite-tsconfig-paths": "^4.2.1"
+  }
 }
