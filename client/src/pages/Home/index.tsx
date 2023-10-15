@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react';
 import { Card } from "../../components/Card"
 import { ProductDetail } from '../../components/PoductDetail'
+import { ShoppingCartContext } from '../../context';
 
 export const Home = () => {
-  const [items, setItems] = useState(null)
+  const { } = useContext(ShoppingCartContext),
   useEffect(() => {
     fetch('https://api.escuelajs.co/api/v1/products?limit=10&offset=10')
       .then(response => response.json())
